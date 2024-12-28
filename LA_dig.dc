@@ -1,0 +1,83 @@
+read_file -format sverilog { ./UART_rx.sv ./UART_tx.sv ./UART.sv ./UART_wrapper.sv ./RAMqueue.sv ./cmd_cfg.sv ./capture.sv ./channel_sample.sv ./chnnl_trig.sv ./trigger_logic.sv ./SPI_RX.sv ./UART_prot.sv ./prot_trig.sv ./trigger.sv ./dig_core.sv ./clk_rst_smpl.sv ./pwm8.sv ./dual_PWM.sv ./LA_dig.sv } 
+set current_design LA_dig
+link
+
+############################################
+# Define clocks and set don't mess with it #
+############################################
+create_clock -name "clk400MHz" -period 1 clk400MHz
+create_generated_clock -name "clk" -source [get_port clk400MHz] -divide_by 4 [get_pins iCLKRST/clk]
+create_generated_clock -name "smpl_clk" -source [get_port clk400MHz] -divide_by 1 [get_pins iCLKRST/smpl_clk]
+
+set_dont_touch_network [find port clk400MHz]
+set_dont_touch_network [get_pins iCLKRST/clk]
+set_dont_touch_network [get_pins iCLKRST/smpl_clk]
+
+# set up pointers for input groups
+set prim_inputs [remove_from_collection [all_inputs] [find port clk]]
+set CH_inputs [find port CH*]
+set RX_input [find port RX]
+set rst_locked_inputs [remove_from_collection [all_inputs] [find port duty*]]
+
+# set false paths
+set_false_path -from [get_cell iDIG/iCMD/decimator*]
+set_false_path -from [get_cell iCOMM/cmd[15:8]*]
+
+##################################################################
+# Set input delay & drive on primary inputs, then override rst_n #
+##################################################################
+set_input_delay -fall -clock clk 0.25 [copy_collection $CH_inputs]
+set_input_delay -clock clk400MHz 0.25 [copy_collection $rst_locked_inputs]
+set_input_delay -clock clk 0.25 [copy_collection $RX_input]
+set_driving_cell -lib_cell NAND2X1_LVT -library saed32lvt_tt0p85v25c [copy_collection $prim_inputs]
+
+##########################################
+# Set output delay & load on all outputs #
+##########################################
+set_output_delay -clock clk 0.5 [all_outputs]
+set_load 0.05 [all_outputs]
+
+#############################################################
+# Max transition time is important for Hot-Electron reasons #
+#############################################################
+set_max_transition 0.15 [current_design]
+
+########################################################################
+# Wire load model allows it to estimate internal parasitic capacitance #
+########################################################################
+# employs the Synopsys 32nm wire load model for a block of size 16000 sq microns
+set_wire_load_model -name 16000 -library saed32lvt_tt0p85v25c
+
+########################################
+# Now actually synthesize for 1st time #
+########################################
+compile -map_effort medium -area_effort high
+
+report_area
+####################################
+# Take a look at max & min timings #
+####################################
+report_timing -path full -delay max -nworst 3
+report_timing -path full -delay min -nworst 3
+
+## smash the hierarchy (design ware component)
+ungroup -all -flatten
+
+# configure clocks
+set_clock_uncertainty 0.2 clk
+set_fix_hold clk
+set_fix_hold smpl_clk
+set_fix_hold clk400MHz
+
+# recompile flattened hierarchy
+compile -map_effort medium -area_effort high
+
+# generate timing reports
+report_timing -delay min -nworst 3 > min_timing.txt
+report_timing -delay max -nworst 3 > max_timing.txt
+
+# generate area report
+report_area > area_report.txt
+
+#### write out final netlist ######
+write -format verilog LA_dig -output LA_dig.vg

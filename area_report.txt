@@ -1,0 +1,30 @@
+ 
+****************************************
+Report : area
+Design : LA_dig
+Version: U-2022.12-SP4
+Date   : Wed Apr 24 22:09:35 2024
+****************************************
+
+Library(s) Used:
+
+    saed32lvt_tt0p85v25c (File: /cae/apps/data/saed32_edk-2022/lib/stdcell_lvt/db_nldm/saed32lvt_tt0p85v25c.db)
+
+Number of ports:                           18
+Number of nets:                          2153
+Number of cells:                         1909
+Number of combinational cells:           1476
+Number of sequential cells:               427
+Number of macros/black boxes:               0
+Number of buf/inv:                        728
+Number of references:                      56
+
+Combinational area:               3264.988004
+Buf/Inv area:                     1228.023839
+Noncombinational area:            2920.368769
+Macro/Black Box area:                0.000000
+Net Interconnect area:            1309.617954
+
+Total cell area:                  6185.356773
+Total area:                       7494.974727
+1

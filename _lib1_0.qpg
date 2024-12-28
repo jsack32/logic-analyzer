@@ -1,0 +1,673 @@
+m255
+K4
+z2
+Z0 !s12c _opt2
+Z1 !s99 nomlopt
+Z2 !s12c _opt1
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R0
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+Z3 !s12c _opt
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R0
+R1
+R0
+R1
+R2
+R1
+R2
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R2
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+!s11f vlog 2023.2_1 2023.05, May 12 2023
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z4 d/filespace/j/jrsack/ece551/LogicAnalyzer
+T_opt
+!s110 1713988846
+VdX^1c]W>7Di41R;VmfJ]Y3
+04 9 4 work LA_dig_tb fast 0
+=13-000ae431a4f1-662964ed-80618-2313f7
+R1
+Z5 !s12b OEM100
+Z6 !s124 OEM100
+o-quiet -auto_acc_if_foreign -work work -L SAED32_lib +acc
+Z7 tCvgOpt 0
+n@_opt
+Z8 OE;O;2023.2_1;77
+R4
+T_opt2
+!s110 1714001072
+Vcm;:LXKGUjhMz^PU12[LY0
+04 9 4 work SPI_RX_tb fast 0
+=13-000ae431a4f1-662994b0-a1f79-260ca1
+R1
+R5
+R6
+o-quiet -auto_acc_if_foreign -work work +acc
+R7
+n@_opt2
+R8
+vAFE
+2/filespace/j/jrsack/ece551/LogicAnalyzer/AFE.sv
+Z9 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z10 !s110 1713989721
+!i10b 1
+!s100 ?665f9[`iKR0Baih>NSjd2
+IB=74@@^ef3GBS[l_S`OOX2
+S1
+R4
+w1713543546
+8/filespace/j/jrsack/ece551/LogicAnalyzer/AFE.sv
+F/filespace/j/jrsack/ece551/LogicAnalyzer/AFE.sv
+!i122 141
+L0 1 93
+Z11 VDg1SIo80bB@j0V0VzS_@n1
+Z12 OE;L;2023.2_1;77
+r1
+!s85 0
+31
+!i113 0
+Z13 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R7
+n@a@f@e
+vcapture
+2/filespace/j/jrsack/ece551/LogicAnalyzer/capture.sv
+R9
+R10
+!i10b 1
+!s100 f]Fm=hi9GR>ZClNmVhJH<0
+I7[MCeenHo5[d0WE<9TMZ@0
+S1
+R4
+w1713974748
+8/filespace/j/jrsack/ece551/LogicAnalyzer/capture.sv
+F/filespace/j/jrsack/ece551/LogicAnalyzer/capture.sv
+!i122 142
+L0 1 113
+R11
+R12
+r1
+!s85 0
+31
+!i113 0
+R13
+R7
+vcapture_tb
+2/filespace/j/jrsack/ece551/LogicAnalyzer/capture_tb.sv
+R9
+!s110 1713912196
+!i10b 1
+!s100 iDPPlloJ4J?Xn@d=h]em=2
+I6ZJ[JheX`Z8[7RzEjeQJn2
+S1
+R4
+w1713912194
+8/filespace/j/jrsack/ece551/LogicAnalyzer/capture_tb.sv
+F/filespace/j/jrsack/ece551/LogicAnalyzer/capture_tb.sv
+!i122 29
+L0 3 253
+R11
+R12
+r1
+!s85 0
+31
+!i113 0
+R13
+R7
+vchannel_sample
+2/filespace/j/jrsack/ece551/LogicAnalyzer/channel_sample.sv
+R9
+R10
+!i10b 1
+!s100 GHX9LVJgKHGjH`kXg:iVY2
+IOnRl73f[ULnRdXEZ@M^?e1
+S1
+R4
+w1713974732
+8/filespace/j/jrsack/ece551/LogicAnalyzer/channel_sample.sv
+F/filespace/j/jrsack/ece551/LogicAnalyzer/channel_sample.sv
+!i122 143
+L0 3 36
+R11
+R12
+r1
+!s85 0
+31
+!i113 0
+R13
+R7
+vchnnl_trig
+2/filespace/j/jrsack/ece551/LogicAnalyzer/chnnl_trig.sv
+R9
+R10
+!i10b 1
+!s100 o4AT4Pnd@XaUORNT163n11
+IGF<K4PRGUKD7?b31Z7ZkB3
+S1
+R4
+w1713822288
+8/filespace/j/jrsack/ece551/LogicAnalyzer/chnnl_trig.sv
+F/filespace/j/jrsack/ece551/LogicAnalyzer/chnnl_trig.sv
+!i122 144
+L0 1 67
+R11
+R12
+r1
+!s85 0
+31
+!i113 0
+R13
+R7
+vclk_rst_smpl
+2/filespace/j/jrsack/ece551/LogicAnalyzer/clk_rst_smpl.sv
+R9
+R10
+!i10b 1
+!s100 @U]`B1:a^zCo1L4LLWZ_H2
+IeGKTLIe]Xi`6z@09kAaWH0
+S1
+R4
+w1713543547
+8/filespace/j/jrsack/ece551/LogicAnalyzer/clk_rst_smpl.sv
+F/filespace/j/jrsack/ece551/LogicAnalyzer/clk_rst_smpl.sv
+!i122 145
+L0 1 140
+R11
+R12
+r1
+!s85 0
+31
+!i113 0
+R13
+R7
+vcmd_cfg
+2/filespace/j/jrsack/ece551/LogicAnalyzer/cmd_cfg.sv
+R9
+R10
+!i10b 1
+!s100 1kWBM<][QW[VBbPHMGDn02
+I0N79oPRc@:J^2B1S[BDO<2
+S1
+R4
+w1713974979
+8/filespace/j/jrsack/ece551/LogicAnalyzer/cmd_cfg.sv
+F/filespace/j/jrsack/ece551/LogicAnalyzer/cmd_cfg.sv
+!i122 146
+L0 2 395
+R11
+R12
+r1
+!s85 0
+31
+!i113 0
+R13
+R7
+vcmd_cfg_tb_working
+2/filespace/j/jrsack/ece551/LogicAnalyzer/cmd_cfg_tb_working.sv
+R9
+!s110 1713911826
+!i10b 1
+!s100 djU1@[82Qb1KL@6NXn_Om3
+I4iR1nDWLX@5KdH56:l0c]2
+S1
+R4
+w1713819103
+8/filespace/j/jrsack/ece551/LogicAnalyzer/cmd_cfg_tb_working.sv
+F/filespace/j/jrsack/ece551/LogicAnalyzer/cmd_cfg_tb_working.sv
+!i122 7
+L0 1 340
+R11
+R12
+r1
+!s85 0
+31
+!i113 0
+R13
+R7
+vComSender
+2/filespace/j/jrsack/ece551/LogicAnalyzer/ComSender.sv
+R9
+R10
+!i10b 1
+!s100 C6nGeHDR75l]6jMZU^P<O1
+I8=Ch[1IzA538O>5l37JY>3
+S1
+R4
+w1713808796
+8/filespace/j/jrsack/ece551/LogicAnalyzer/ComSender.sv
+F/filespace/j/jrsack/ece551/LogicAnalyzer/ComSender.sv
+!i122 147
+L0 3 84
+R11
+R12
+r1
+!s85 0
+31
+!i113 0
+R13
+R7
+n@com@sender
+vdig_core
+2/filespace/j/jrsack/ece551/LogicAnalyzer/dig_core.sv
+R9
+R10
+!i10b 1
+!s100 1oQAoUR<Y?R;PVlO4bZQX1
+I>R?nX:IU;D?Y6DB<@GA^W1
+S1
+R4
+w1713817029
+8/filespace/j/jrsack/ece551/LogicAnalyzer/dig_core.sv
+F/filespace/j/jrsack/ece551/LogicAnalyzer/dig_core.sv
+!i122 148
+L0 1 120
+R11
+R12
+r1
+!s85 0
+31
+!i113 0
+R13
+R7
+vdual_PWM
+2/filespace/j/jrsack/ece551/LogicAnalyzer/dual_PWM.sv
+R9
+R10
+!i10b 1
+!s100 QKf]>aioFJT^1P@1;Ui]61
+I@Y=P_cIVaXF4cZ[JQ=eBb2
+S1
+R4
+w1709751945
+8/filespace/j/jrsack/ece551/LogicAnalyzer/dual_PWM.sv
+F/filespace/j/jrsack/ece551/LogicAnalyzer/dual_PWM.sv
+!i122 149
+L0 3 11
+R11
+R12
+r1
+!s85 0
+31
+!i113 0
+R13
+R7
+ndual_@p@w@m
+vLA_dig
+2/filespace/j/jrsack/ece551/LogicAnalyzer/LA_dig.sv
+R9
+R10
+!i10b 1
+!s100 ZFZN[MnMfe8OjPzY8[FZ<1
+Im<>KiUaWBE`Uk=1zYX>TJ2
+S1
+R4
+Z14 w1713543548
+8/filespace/j/jrsack/ece551/LogicAnalyzer/LA_dig.sv
+F/filespace/j/jrsack/ece551/LogicAnalyzer/LA_dig.sv
+!i122 150
+L0 1 88
+R11
+R12
+r1
+!s85 0
+31
+!i113 0
+R13
+R7
+n@l@a_dig
+vLA_dig_tb
+2/filespace/j/jrsack/ece551/LogicAnalyzer/LA_dig_tb.sv
+R9
+!s110 1713999831
+!i10b 1
+!s100 >B]mhmCn>KS:K1LiHI[nV0
+IjGXE=lD>27Se@_KV@3S6h0
+S1
+R4
+w1713999823
+8/filespace/j/jrsack/ece551/LogicAnalyzer/LA_dig_tb.sv
+F/filespace/j/jrsack/ece551/LogicAnalyzer/LA_dig_tb.sv
+Ftb_tasks.txt
+!i122 192
+L0 4 665
+R11
+R12
+r1
+!s85 0
+31
+!i113 0
+R13
+R7
+n@l@a_dig_tb
+vLA_dig_tb_eric
+2/filespace/j/jrsack/ece551/LogicAnalyzer/LA_dig_tb_eric.sv
+R9
+Z15 !s110 1713989722
+!i10b 1
+!s100 RjdB<Zkbe1]Y;0m?^NBEX0
+I[_SMB2Wd1XeXQ1gUN2VdO1
+S1
+R4
+w1713939195
+8/filespace/j/jrsack/ece551/LogicAnalyzer/LA_dig_tb_eric.sv
+F/filespace/j/jrsack/ece551/LogicAnalyzer/LA_dig_tb_eric.sv
+!i122 152
+L0 2 240
+R11
+R12
+r1
+!s85 0
+31
+!i113 0
+R13
+R7
+n@l@a_dig_tb_eric
+vpll8x
+2/filespace/j/jrsack/ece551/LogicAnalyzer/pll8x.v
+R15
+!i10b 1
+!s100 LbXXXWa22[l:ESzT[oABl0
+IAmCnRlVH0OSUidDgAz;=70
+R4
+R14
+8/filespace/j/jrsack/ece551/LogicAnalyzer/pll8x.v
+F/filespace/j/jrsack/ece551/LogicAnalyzer/pll8x.v
+!i122 153
+L0 2 75
+R11
+R12
+r1
+!s85 0
+31
+!i113 0
+o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R7
+vprot_trig
+2/filespace/j/jrsack/ece551/LogicAnalyzer/prot_trig.sv
+R9
+R15
+!i10b 1
+!s100 `c`=am_;_?bbg;IjB>_P`2
+I`F2j^0_@0F@?YH3NBhJhA0
+S1
+R4
+R14
+8/filespace/j/jrsack/ece551/LogicAnalyzer/prot_trig.sv
+F/filespace/j/jrsack/ece551/LogicAnalyzer/prot_trig.sv
+!i122 154
+L0 1 37
+R11
+R12
+r1
+!s85 0
+31
+!i113 0
+R13
+R7
+vpwm8
+2/filespace/j/jrsack/ece551/LogicAnalyzer/pwm8.sv
+R9
+R15
+!i10b 1
+!s100 7iXKac7R<Xb4iNV^aI8i]3
+I9h4==L;Lo?Vh]N06>MO`G0
+S1
+R4
+w1709751812
+8/filespace/j/jrsack/ece551/LogicAnalyzer/pwm8.sv
+F/filespace/j/jrsack/ece551/LogicAnalyzer/pwm8.sv
+!i122 155
+L0 3 27
+R11
+R12
+r1
+!s85 0
+31
+!i113 0
+R13
+R7
+vRAMqueue
+2/filespace/j/jrsack/ece551/LogicAnalyzer/RAMqueue.sv
+R9
+R15
+!i10b 1
+!s100 0cP^B]im<ngQ2loNAehH73
+I;N1MDFnZn5W:>Qc=EAVS;0
+S1
+R4
+w1713933460
+8/filespace/j/jrsack/ece551/LogicAnalyzer/RAMqueue.sv
+F/filespace/j/jrsack/ece551/LogicAnalyzer/RAMqueue.sv
+!i122 156
+L0 1 22
+R11
+R12
+r1
+!s85 0
+31
+!i113 0
+R13
+R7
+n@r@a@mqueue
+vSPI_RX
+2/filespace/j/jrsack/ece551/LogicAnalyzer/SPI_RX.sv
+R9
+!s110 1714001063
+!i10b 1
+!s100 8@O35oDG7[KMWjSAgQN8`2
+I`91=CUoA?1A3NMVh2zc:U1
+S1
+R4
+w1714001058
+8/filespace/j/jrsack/ece551/LogicAnalyzer/SPI_RX.sv
+F/filespace/j/jrsack/ece551/LogicAnalyzer/SPI_RX.sv
+!i122 195
+L0 3 100
+R11
+R12
+r1
+!s85 0
+31
+!i113 0
+R13
+R7
+n@s@p@i_@r@x
+vSPI_RX_tb
+2/filespace/j/jrsack/ece551/LogicAnalyzer/SPI_RX_tb.sv
+R9
+!s110 1713997188
+!i10b 1
+!s100 Knldf<WInga6G`7`6T0IV2
+IQUZ66d9UnfgDz9c9@A@^K0
+S1
+R4
+w1713309622
+8/filespace/j/jrsack/ece551/LogicAnalyzer/SPI_RX_tb.sv
+F/filespace/j/jrsack/ece551/LogicAnalyzer/SPI_RX_tb.sv
+!i122 185
+L0 4 178
+R11
+R12
+r1
+!s85 0
+31
+!i113 0
+R13
+R7
+n@s@p@i_@r@x_tb
+vSPI_TX
+2/filespace/j/jrsack/ece551/LogicAnalyzer/SPI_TX.sv
+R9
+R15
+!i10b 1
+!s100 ^[PjFa=lWPZL93`l^1?=P0
+IAd<^6O;iUYYND:B0>7P5@2
+S1
+R4
+w1710950265
+8/filespace/j/jrsack/ece551/LogicAnalyzer/SPI_TX.sv
+F/filespace/j/jrsack/ece551/LogicAnalyzer/SPI_TX.sv
+!i122 158
+L0 8 128
+R11
+R12
+r1
+!s85 0
+31

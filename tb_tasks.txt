@@ -1,0 +1,177 @@
+/////////////////////////////////////////////////////////////////////////////////////
+/// tb_tasks contains tasks commonly used in the full chip tester of the 		 ///
+/// logic analyzer. 															///
+//////////////////////////////////////////////////////////////////////////////////
+
+/// initializes stimulus and performs a global reset
+task initialize;
+	send_cmd = 0;
+	REF_CLK = 0;
+	RST_n = 0;						// assert reset
+	repeat (2) @(posedge REF_CLK);
+	@(negedge REF_CLK);				// on negedge REF_CLK after a few REF clocks
+	RST_n = 1;						// deasert reset
+	@(negedge REF_CLK);
+endtask
+
+/// sends host_cmd through the UART
+task snd_cmd;
+	@(posedge clk);
+    send_cmd = 1;
+    @(posedge clk);
+    send_cmd = 0;
+    @(posedge cmd_sent);	// wait for command to send
+    @(posedge clk);
+endtask
+
+/// sets trmt high for one clock cycle to start UART/SPI
+task snd_tx;
+	@(posedge clk);
+    strt_tx = 1;
+    @(posedge clk);
+    strt_tx = 0;
+    @(posedge done);
+	@(posedge clk);
+endtask
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+/// Polls for capture_done by reading the response from the UART when reading TrigCfg logic.///
+/// Sets capture_done_bit to 1 when capture is complete, or times out if it takes too long.///
+/////////////////////////////////////////////////////////////////////////////////////////////
+task poll_for_capture_done;
+	capture_done_bit = 1'b0;			// capture_done not set yet
+	loop_cnt = 0;
+  	while (!capture_done_bit)
+	  begin
+	    repeat(400) @(posedge clk);		// delay a while between reads
+	    loop_cnt = loop_cnt + 1;
+	    if (loop_cnt>200) begin
+	      $display("ERROR: capture done bit never set");
+	      return;
+	    end
+            // read TRIG_CFG which has capture_done bit
+			op = 2'b00;				// turn on read mode
+			addr_or_chnl = 6'h00;	// read TrigCfg (0x00)
+			snd_cmd;				// send the command, waits for cmd_sent
+	    // Now wait for response
+	    @(posedge resp_rdy)
+	    if (resp&8'h20)				// is capture_done bits set?
+	      capture_done_bit = 1'b1;
+	    clr_resp_rdy = 1;
+	    @(posedge clk);
+	    clr_resp_rdy = 0;
+	  end
+endtask
+
+task poll_for_capture_done_match(input integer n);
+	capture_done_bit = 1'b0;			// capture_done not set yet
+	loop_cnt = 0;
+  	while (!capture_done_bit)
+	  begin
+	    repeat(400) @(posedge clk);		// delay a while between reads
+	    loop_cnt = loop_cnt + 1;
+	    if (loop_cnt>200) begin
+	      $display("ERROR: capture done bit never set for test %d", n);
+	      err = 1;
+		  return;
+	    end
+            // read TRIG_CFG which has capture_done bit
+			op = 2'b00;				// turn on read mode
+			addr_or_chnl = 6'h00;	// read TrigCfg (0x00)
+			snd_cmd;				// send the command, waits for cmd_sent
+	    // Now wait for response
+	    @(posedge resp_rdy)
+	    if (resp&8'h20)				// is capture_done bits set?
+	      capture_done_bit = 1'b1;
+	    clr_resp_rdy = 1;
+	    @(posedge clk);
+	    clr_resp_rdy = 0;
+	  end
+	$display("Test %d passed!", n);
+endtask
+
+task poll_for_capture_done_no_match(input integer n);
+	capture_done_bit = 1'b0;			// capture_done not set yet
+	loop_cnt = 0;
+  	while (!capture_done_bit)
+	  begin
+	    repeat(400) @(posedge clk);		// delay a while between reads
+	    loop_cnt = loop_cnt + 1;
+	    if (loop_cnt>100) begin
+	      $display("Test %d passed!", n);
+	      return;
+	    end
+            // read TRIG_CFG which has capture_done bit
+			op = 2'b00;				// turn on read mode
+			addr_or_chnl = 6'h00;	// read TrigCfg (0x00)
+			snd_cmd;				// send the command, waits for cmd_sent
+	    // Now wait for response
+	    @(posedge resp_rdy)
+	    if (resp&8'h20)				// is capture_done bits set?
+	      capture_done_bit = 1'b1;
+	    clr_resp_rdy = 1;
+	    @(posedge clk);
+	    clr_resp_rdy = 0;
+	  end
+	  err = 1;
+	$display("Error: Trigger on test %d when there is no match.", n);
+endtask
+
+/// collects dump data into file fptr and closes the file
+task collect_dump(input integer fptr);		// pointer to the file being written to
+	for (sample=0; sample<384; sample++)
+      fork
+        begin: timeout1
+	      repeat(6000) @(posedge clk);
+	      $display("ERR: Only received %d of 384 bytes on dump",sample);
+		  $stop();
+	      sample = 384;		// break out of loop
+	    end
+	    begin
+	      @(posedge resp_rdy);
+	      disable timeout1;
+              $fdisplay(fptr,"%h",resp);	// write to CH1dmp.txt
+	      clr_resp_rdy = 1;
+	      @(posedge clk);
+	      clr_resp_rdy = 0;
+	      if (sample%32==0) $display("At sample %d of dump",sample);
+	    end
+      join
+  
+  repeat(10) @(posedge clk);
+  $fclose(fptr);
+endtask
+
+/// checks for a positive acknowledgement
+task check_posAck;
+	@(posedge resp_rdy);
+	if (!posAck) begin
+		err = 1;
+		$display("Error: No positive acknowledgement is sent.");
+	end
+endtask
+
+/// compares an output file to an expected output file
+task compare(input integer fptr, fexp, n);
+	found_res = $fscanf(fptr,"%h",res);	// reads fptr file into res
+    found_expected = $fscanf(fexp,"%h",exp);	// reads expected file into exp
+    sample = 1;
+	mismatches = 0;
+	while (found_expected==1) begin
+		if (res!==exp)
+		begin
+			$display("At sample %d the result of %h does not match expected of %h",sample,res,exp);
+			mismatches = mismatches + 1;
+			/// if more than 50 mismatches, test fails
+			if (mismatches>50) begin
+				$display("ERR: Too many mismatches... stopping test %d", n);
+				err = 1;
+				return;
+			end
+		end
+		sample = sample + 1;
+		found_res = $fscanf(fptr,"%h",res);
+		found_expected = $fscanf(fexp,"%h",exp);
+	end
+	$display("Test %d passed!", n);
+endtask

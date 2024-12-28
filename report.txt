@@ -1,0 +1,12 @@
+Coverage Report Summary Data by file
+
+=================================================================================
+=== File: /filespace/j/jrsack/ece551/LogicAnalyzer/UART.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         48        48         0   100.00%
+
+
+Total Coverage By File (code coverage only, filtered view): 100.00%
+
